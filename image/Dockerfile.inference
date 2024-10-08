@@ -1,17 +1,5 @@
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
-# Install necessary dependencies along with nginx
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get -y install --no-install-recommends \
-    git \
-    python3.10 \
-    python3-pip \
-    nginx \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# RUN pip3 install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121
 
 ENV TZ=Europe/Minsk
 # Allow statements and log messages to immediately appear in the Knative logs
@@ -23,6 +11,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
         apt-get install --no-install-recommends ffmpeg libsm6 libxext6  -y && \
         apt-get clean && \
+        git \
+        curl \
+        nginx \
         rm -rf /var/lib/apt/lists/*
 
 
