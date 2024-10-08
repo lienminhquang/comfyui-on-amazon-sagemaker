@@ -28,12 +28,17 @@ function checkout_gitrepo() {
   echo "Checking out $1... at rivision $2 to $3"
   echo "Base directory: $4"
 
-  cd $4
-  rm -rf $3
-  git clone --no-tags --recurse-submodules --shallow-submodules $1
+  pushd $4
+  if [ ! -d "$3" ]; then
+    git clone --no-tags --recurse-submodules --shallow-submodules $1
+  else
+    pushd "$3"
+    git pull
+    popd
+  fi
   cd $3
   git reset --hard $2
-  cd ../..
+  popd
 
   echo "########################################"
 }
