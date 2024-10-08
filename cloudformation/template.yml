@@ -109,8 +109,8 @@ Resources:
           ContainerStartupHealthCheckTimeoutInSeconds: 600
           InitialInstanceCount: 1
           InstanceType: !Sub "${SageMakerInstanceType}"
-          RoutingConfig:
-            RoutingStrategy: LEAST_OUTSTANDING_REQUESTS
+          # RoutingConfig:
+          #   RoutingStrategy: LEAST_OUTSTANDING_REQUESTS
   ComfyUIEndpoint:
     Type: "AWS::SageMaker::Endpoint"
     Properties:
