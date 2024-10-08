@@ -1,5 +1,4 @@
-FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
-
+FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
 
 ENV TZ=Europe/Minsk
 # Allow statements and log messages to immediately appear in the Knative logs
@@ -25,7 +24,7 @@ ENV PYTHONUNBUFFERED=TRUE
 ENV PYTHONDONTWRITEBYTECODE=TRUE
 
 # Git reference of ComfyUI (can be a branch name or commit id)
-ARG COMFYUI_GIT_REF=6d281b4ff4ad3918a4f3b4ca4a8b547a2ba3bf80
+ARG COMFYUI_GIT_REF=a178e25912b01abf436eba1cfaab316ba02d272d
 
 WORKDIR /opt/program
 
@@ -48,15 +47,15 @@ RUN pip3 install --no-cache-dir -r /opt/program/requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt \
     && rm -rf /root/.cache/pip && \
-    pip install --no-cache-dir mmcv==2.0.1 -f https://download.openmmlab.com/mmcv/dist/cu117/torch2.0/index.html && \
+    pip install mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.3/index.html && \
     pip uninstall -y opencv-python opencv-contrib-python opencv-python-headless opencv-contrib-python-headless && \
     pip install --no-cache-dir --disable-pip-version-check opencv-contrib-python==4.7.0.72 && \
-    pip install llama-cpp-python --prefer-binary --extra-index-url=https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX2/cu117
+    pip install llama-cpp-python --prefer-binary --extra-index-url=https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX2/cu121
 
 # Clone and checkout ComfyUI-Impact-Pack
 RUN git clone https://github.com/lienminhquang/ComfyUI-Impact-Pack.git /opt/program/ComfyUI/custom_nodes/ComfyUI-Impact-Pack && \
     cd /opt/program/ComfyUI/custom_nodes/ComfyUI-Impact-Pack && \
-    git checkout 869a43f00ed6c3867a7cdd0d8a8a2ebe75b9b5a3
+    git checkout f6a5d0c02f7c9a6dec4ef95220112e85b73bbb00
 
 # Clone and checkout ComfyUI-Allor
 RUN git clone https://github.com/Nourepide/ComfyUI-Allor.git /opt/program/ComfyUI/custom_nodes/ComfyUI-Allor && \
