@@ -8,11 +8,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN apt update -y && \
+        apt install -y git curl && \
+        rm -rf /var/lib/apt/lists
+
 RUN apt-get update && \
         apt-get install --no-install-recommends ffmpeg libsm6 libxext6  -y && \
         apt-get clean && \
-        git \
-        curl \
         nginx \
         rm -rf /var/lib/apt/lists/*
 
