@@ -29,6 +29,7 @@ function checkout_gitrepo() {
   echo "Base directory: $4"
 
   cd $4
+  rm -rf $3
   git clone --no-tags --recurse-submodules --shallow-submodules $1
   cd $3
   git reset --hard $2
