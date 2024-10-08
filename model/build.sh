@@ -205,7 +205,6 @@ checkout_gitrepo https://github.com/cubiq/ComfyUI_IPAdapter_plus.git "4b6d3c3518
 checkout_gitrepo https://github.com/lienminhquang/was-node-suite-comfyui.git "0b8469bd33d0ab6f6a5840c136612ed572f43522" was-node-suite-comfyui ${TARGET_DIR}/custom_nodes
 checkout_gitrepo https://github.com/Nourepide/ComfyUI-Allor.git "b7fb9ff0bd50124afcbf8cd2638a73f883d32a23" ComfyUI-Allor ${TARGET_DIR}/custom_nodes
 checkout_gitrepo https://github.com/lienminhquang/ComfyUI-Impact-Pack.git "869a43f00ed6c3867a7cdd0d8a8a2ebe75b9b5a3" ComfyUI-Impact-Pack ${TARGET_DIR}/custom_nodes
-checkout_gitrepo https://$GITHUB_TOKEN@github.com/PixelML/comfyUI-custom-nodes.git "5cb3c6dcff47017b006f8f09312a0c1cbeaef15f" comfyUI-custom-nodes ${TARGET_DIR}/custom_nodes
 checkout_gitrepo https://github.com/Gourieff/comfyui-reactor-node.git "078c7e6a17a3998ce81e71d7e7d14e61999bc5e1" comfyui-reactor-node ${TARGET_DIR}/custom_nodes
 checkout_gitrepo https://github.com/jags111/efficiency-nodes-comfyui.git "c15913587f218ec17ac4208d382a789934929ae4" efficiency-nodes-comfyui ${TARGET_DIR}/custom_nodes
 checkout_gitrepo https://github.com/ceruleandeep/ComfyUI-LLaVA-Captioner.git "8fcd56888ca9eb13d7dd91ab0e6431ebc2ccfc9c" ComfyUI-LLaVA-Captioner ${TARGET_DIR}/custom_nodes
