@@ -99,6 +99,9 @@ Resources:
   ComfyUIEndpointConfig:
     Type: "AWS::SageMaker::EndpointConfig"
     Properties:
+      AsyncInferenceConfig:
+        OutputConfig:
+          S3OutputPath: !Sub s3://${DeploymentBucket}/${AppName}/async-inference-output
       EndpointConfigName: !Sub "${AppName}-${ModelVersion}"
       ProductionVariants:
         - VariantName: !Sub "${AppName}-${ModelVersion}"
