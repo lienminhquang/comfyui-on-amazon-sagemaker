@@ -32,6 +32,7 @@ function checkout_gitrepo() {
   git clone --no-tags --recurse-submodules --shallow-submodules $1
   cd $3
   git reset --hard $2
+  cd ../..
 
   echo "########################################"
 }
