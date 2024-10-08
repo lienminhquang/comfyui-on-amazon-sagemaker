@@ -43,13 +43,13 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
     git checkout $COMFYUI_GIT_REF
 # RUN pip3 install --no-cache-dir -r /opt/program/ComfyUI/requirements.txt
 
-RUN pip3 install --no-cache-dir -r /opt/program/comfy-requirements.txt
 
 # Copy extra_model_paths so that ComfyUI load the model artifacts
 COPY extra_model_paths.yaml /opt/program/ComfyUI/
 
 # Copy contents of code/ dir to /opt/program
 COPY code/ /opt/program/
+RUN pip3 install --no-cache-dir -r /opt/program/comfy-requirements.txt
 RUN pip3 install --no-cache-dir -r /opt/program/requirements.txt
 
 #checkov:skip=CKV_DOCKER_3:SageMaker expects all containers to run with root users
