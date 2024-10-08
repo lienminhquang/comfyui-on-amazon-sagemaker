@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update -y && \
-        apt install -y git curl nginx && \
+        apt install -y git curl nginx gcc g++ && \
         rm -rf /var/lib/apt/lists
 
 RUN apt-get update && \
@@ -16,12 +16,6 @@ RUN apt-get update && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
-
-# Set some environment variables. PYTHONUNBUFFERED prevents Python buffering our standard
-# output stream, which means that logs can be delivered to the user quickly. PYTHONDONTWRITEBYTECODE
-# stops Python creating the .pyc files which are unnecessary in this case.
-ENV PYTHONUNBUFFERED=TRUE
-ENV PYTHONDONTWRITEBYTECODE=TRUE
 
 # Git reference of ComfyUI (can be a branch name or commit id)
 ARG COMFYUI_GIT_REF=a178e25912b01abf436eba1cfaab316ba02d272d
