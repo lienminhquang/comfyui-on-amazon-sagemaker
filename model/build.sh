@@ -16,7 +16,11 @@ download_huggingface() {
 # Function to download files from any URL
 # usage: download_file <url> <output_path>
 download_file() {
-    wget -nc "$1" -O "$2" || wget -N "$1" -O "$2"
+    if [ ! -f "$2" ]; then
+        wget -nc "$1" -O "$2" || wget -N "$1" -O "$2"
+    else
+        echo "File already exists: $2. Skipping download."
+    fi
 }
 
 function checkout_gitrepo() {
