@@ -20,7 +20,7 @@ configure() {
     APP_NAME="comfyui"
 
     # Git reference of ComfyUI (should be a commit id instead of a branch name for production)
-    COMFYUI_GIT_REF="v0.0.6"
+    COMFYUI_GIT_REF="a178e25912b01abf436eba1cfaab316ba02d272d"
 
     # S3 bucket for deployment files (model artifact and Lambda package)
     # Note: Adjust ComfyUIModelExecutionRole in template.yaml to grant S3 related permissions if the bucket name does not contain "SageMaker", "Sagemaker" or "sagemaker".

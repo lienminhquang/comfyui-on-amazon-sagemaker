@@ -1,4 +1,6 @@
+
 FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+# FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
 ENV TZ=Europe/Minsk
 # Allow statements and log messages to immediately appear in the Knative logs

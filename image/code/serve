@@ -19,6 +19,24 @@ import signal
 import subprocess
 import sys
 
+def run_nvidia_smi():
+    try:
+        # Execute the nvidia-smi command
+        result = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+        # Check for errors
+        if result.returncode != 0:
+            print("Error running nvidia-smi:")
+            print(result.stderr)
+        else:
+            # Print the output of nvidia-smi
+            print(result.stdout)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Call the function
+run_nvidia_smi()
+
 cpu_count = multiprocessing.cpu_count()
 
 inference_server_timeout = os.environ.get("INFERENCE_SERVER_TIMEOUT", 70)
